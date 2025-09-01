@@ -1,3 +1,7 @@
+## 0.3.1
+
+- Fix bug #10 (lints not working when using EquatableMixin)
+
 ## 0.3.0
 
 - Upgrade sdk to >=3.0.0 <4.0.0
