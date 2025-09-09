@@ -38,11 +38,16 @@ extension AddEquatableClassFieldDeclarationListener on LintRuleNodeRegistry {
         return;
       }
 
-      const typeChecker =
+      const mixinTypeChecker =
+          TypeChecker.fromName('EquatableMixin', packageName: 'equatable');
+      const classTypeChecker =
           TypeChecker.fromName('Equatable', packageName: 'equatable');
       final classType = classElement.thisType;
 
-      if (!typeChecker.isAssignableFromType(classType)) {
+      final isEquatable = mixinTypeChecker.isAssignableFromType(classType) ||
+          classTypeChecker.isAssignableFromType(classType);
+
+      if (!isEquatable) {
         return;
       }
 
